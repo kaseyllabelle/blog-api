@@ -1,24 +1,43 @@
-// require express
 const express = require('express');
-
-// initialize express
 const app = express();
-
-// config routing for blogRouter
 const blogRouter = require('./blogRouter');
 
-// look in public for static files
 app.use(express.static('public'));
-
-// use blogRouter for /blog-posts endpoint
 app.use('/blog-posts', blogRouter);
 
-// for root, use views/index.html
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-// direct requests to server.js
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
-});
+let server;
+
+function runServer(){
+  const port = process.env.PORT || 8080;
+  return new Promise((resolve, reject) => {
+    server = app.listen(port, () => {
+      console.log(`Your app is listening on port ${port}`);
+      resolve(server);
+    }).on('error', err => {
+      reject(err)
+    });
+  });
+}
+
+function closeServer(){
+  return new Promise((resolve, reject) => {
+    console.log('Closing server');
+    server.close(err => {
+      if (err){
+        reject(err);
+        return;
+      }
+      resolve();
+    });
+  });
+}
+
+if (require.main === module){
+  runServer().catch(err => console.error(err));
+};
+
+module.exports = {app, runServer, closeServer};

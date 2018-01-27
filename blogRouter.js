@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
 
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = ['title', 'content', 'author'];
-  for (let i=0; i<requiredFields.length; i++) {
+  for (let i=0; i<requiredFields.length; i++){
     const field = requiredFields[i];
-    if (!(field in req.body)) {
+    if (!(field in req.body)){
       const message = `Missing \`${field}\` in request body`
       console.error(message);
       return res.status(400).send(message);
@@ -37,15 +37,15 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id', jsonParser, (req, res) => {
   const requiredFields = ['title', 'content', 'author', 'id'];
-  for (let i=0; i<requiredFields.length; i++) {
+  for (let i=0; i<requiredFields.length; i++){
     const field = requiredFields[i];
-    if (!(field in req.body)) {
+    if (!(field in req.body)){
       const message = `Missing \`${field}\` in request body`
       console.error(message);
       return res.status(400).send(message);
     }
   }
-  if (req.params.id !== req.body.id) {
+  if (req.params.id !== req.body.id){
     const message = (
       `Request path id (${req.params.id}) and request body id `
       `(${req.body.id}) must match`);
@@ -60,6 +60,6 @@ router.put('/:id', jsonParser, (req, res) => {
     author: req.body.author
   });
   res.status(204).end();
-})
+});
 
 module.exports = router;

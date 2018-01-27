@@ -1,0 +1,9 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: L9S8fvXRWBBpZaMNLbe57qnqxmB/Elfg0AeKirv84HlbM3Td9aTQt6g3kwS5o/Us1kSmuQzlZRPY6ajO1TeYCo2j9S8NqLFKd0dkK5LmJruxUZA+dmN5sv9WCJbem6r6nIS8pT5di6XJlddlfKj6dI2QMUyhPP9G0vNl+HTt9Osr5QCNDe3Zj8bAMuMl2dx+phKavy1qY8zJBuz+Y0Mmqa9JcIVx8o4rBXxQsVrk0HgSos/U70N76g+vzk9O9pTSUUdIpCIFvrH5vYftcxXEVmFGXts53ScHDBhJnq6AbEWX5VEXfOtzgpAMuHmFRgViwlbsBK+KdVHAJ8asaqkcgG/VdapJ3g0+DCtJJWSJbrOZ15E3HSJ2I1chBaXpPZT9jQjdwWceamoJ9ffno9HHJKesXwBndSeumrz3fktTcRExvY0w0tbllp46GyjsnWP4oKlTM2R+wxoQPGBM1nS6yZ+0wfdgu4AtvnxRKZEaDH5pfoaDUj4kliYTQIuKiF4L6MCkgW7KoOn/ZxmnSWT6wSgLwTyAdXhqev4a/xwpYz+ckTwdgcCfTtvoG8OO6/UMo6CszoVtz0qa79wzDUATIRtD8EkPKdTg3fj3ao6AwoR66xY/SBOCcgnRp+qAvXHXHzzY7UhFGSQ8qHUxm16eNpoj3q/tyFWjununrYDBqm8=
+  app: serene-taiga-65317
+  on:
+    repo: kaseyllabelle/blog-api
